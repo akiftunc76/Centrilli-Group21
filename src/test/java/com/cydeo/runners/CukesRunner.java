@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",// we provide the path of features directory and let our project know where to find all of the feature files
         glue = "com/cydeo/step_definitions",// glue gives path to the package of the step_definitions
         dryRun = false,
-        tags = "@smoke"
+        tags = "@wip"
 )
 public class CukesRunner {
 }
