@@ -17,11 +17,12 @@ Feature: Centrilli Fleet/Vehicles/Vehicles Services Logs Function verifications
     Given user clicks Vehicle Service Logs button
     Given user is on the Vehicle Service Logs page
 
-
+  @wip
   Scenario: user can create a vehicle service log
     When user clicks on Create button
     And user selects a vehicle
     And user selects a service type
+    And user types "inv-02" invoice reference input box
     And user clicks on Save button
     Then user sees Edit button on the page
 
@@ -45,17 +46,16 @@ Feature: Centrilli Fleet/Vehicles/Vehicles Services Logs Function verifications
     And user clicks on Save button
     Then user sees "Audi" in page title
 
-  @wip
+
   Scenario: “Attachment” and "Action" buttons are displayed at the top of the page (after creating a new Service Logs)
     When user clicks on Create button
     And user selects a vehicle
     And user selects a service type
-    And user types "inv-01" invoice reference input box
     And user clicks on Save button
     Then user sees Attachment button at the top of the page
     Then user sees Action button at the top of the page
 
-  @wip
+
   Scenario: user can find the new created Service Logs value under Service Logs list by using search box
     When user types "Audi/A1" to the search box and hits the enter key
     Then user sees the new created Service Logs value "inv-01" at the end of the Service Logs list

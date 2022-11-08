@@ -9,7 +9,6 @@ public class VehiclesServicesLogsPage {
 
     public VehiclesServicesLogsPage() {PageFactory.initElements(Driver.getDriver(),this);}
 
-
     @FindBy(xpath = "//a[@class='dropdown-toggle']")
     public WebElement moreButton;
 
@@ -25,14 +24,8 @@ public class VehiclesServicesLogsPage {
     @FindBy(xpath = "//tr[2]//div/div/input")
     public WebElement vehicleInputBox;
 
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/div/div/div[1]/table[1]/tbody/tr[3]/td[2]/div/div/input")
+    @FindBy(xpath = "//div[1]/table[1]/tbody/tr[3]/td[2]/div/div/input")
     public WebElement serviceTypeInputBox;
-
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/div/div/div[1]/table[1]/tbody/tr[3]/td[2]/div/div/span")
-    public WebElement serviceTypeDropdown;
-
-    @FindBy(xpath = "/html/body/ul[2]/li[5]/a")
-    public WebElement snowTires;
 
     @FindBy(xpath = "//button[@accesskey='s']")
     public WebElement saveButton;
@@ -46,8 +39,6 @@ public class VehiclesServicesLogsPage {
     @FindBy(xpath = "//button[@accesskey='j']")
     public WebElement discardButton;
 
-    @FindBy(xpath = "/html/head/title")
-    public WebElement pageTitle;
 
     @FindBy(xpath = "//*[contains(text(),'Attachment')]")
     public WebElement attachmentButton;
@@ -70,8 +61,6 @@ public class VehiclesServicesLogsPage {
     @FindBy(xpath = "//button[@aria-label='graph']")
     public WebElement graphButton;
 
-    @FindBy(xpath = "//button[@data-original-title]")
-    public WebElement dataViewTitle;
 
 
 

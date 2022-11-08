@@ -85,7 +85,7 @@ public class VehiclesServicesLogs_StepDefinition {
         BrowserUtils.sleep(2);
         vehiclesServicesLogsPage.serviceTypeInputBox.click();
         BrowserUtils.sleep(2);
-        Driver.getDriver().findElement(By.xpath("/html/body/ul[2]/li[5]/a"));
+        Driver.getDriver().findElement(By.xpath("/html/body/ul[2]/li[5]")).click();
         BrowserUtils.sleep(2);
 
     }
