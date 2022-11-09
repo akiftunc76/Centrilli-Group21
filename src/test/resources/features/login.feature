@@ -13,3 +13,4 @@ Feature: Centrilli app login feature
     Given user is on the centrilli login page
     When user enters invalid username and password
     Then user should see wrong login/password message displayed
+
