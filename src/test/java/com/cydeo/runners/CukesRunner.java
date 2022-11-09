@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = "html:target/cucumber-report.html",// determines what type of report we want to generate with our project,and also where we want to store
+        plugin = {"html:target/cucumber-report.html",// determines what type of report we want to generate with our project,and also where we want to store
+                "json:target/cucumber.json"},
         features = "src/test/resources/features",// we provide the path of features directory and let our project know where to find all of the feature files
         glue = "com/cydeo/step_definitions",// glue gives path to the package of the step_definitions
         dryRun = false,
