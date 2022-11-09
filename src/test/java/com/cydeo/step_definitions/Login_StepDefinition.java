@@ -28,7 +28,7 @@ public class Login_StepDefinition {
         String title = Driver.getDriver().getTitle();
         System.out.println("title = " + title);
 
-        Assert.assertTrue(title.equals("Odoo"));
+        Assert.assertEquals(title,"Odoo");
 
     }
     @When("user enters invalid username and password")
@@ -39,7 +39,7 @@ public class Login_StepDefinition {
         loginPage.login(username,password);
 
     }
-    @Then("user should see wrong login\\/password message displayed")
+    @Then("user should see wrong login and password message displayed")
     public void user_should_see_wrong_login_password_message_displayed() {
         String message = loginPage.invalidMessage.getText();
         Assert.assertTrue(message.contains("Wrong login"));

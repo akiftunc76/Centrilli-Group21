@@ -2,14 +2,15 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.pages.VehicleCostsPage;
 import com.cydeo.utilities.BrowserUtils;
-import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import com.cydeo.utilities.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 public class Vehicles_StepDefinitions {
@@ -37,9 +38,9 @@ public class Vehicles_StepDefinitions {
     @And("user clicks fleet button")
     public void userClicksFleetButton() {
 
-        if (vehicleCostsPage.fleetButton.isDisplayed()){
+        if (vehicleCostsPage.fleetButton.isDisplayed()) {
             vehicleCostsPage.fleetButton.click();
-        }else {
+        } else {
             vehicleCostsPage.moreButton.click();
             vehicleCostsPage.fleetButton.click();
         }
@@ -50,26 +51,30 @@ public class Vehicles_StepDefinitions {
     @And("user clicks Vehicle Costs button")
     public void userClicksVehicleCostsButton() {
         vehicleCostsPage.vehicleCostsButton.click();
+        BrowserUtils.waitFor(2);
     }
 
     @And("user clicks create button")
     public void userClicksCreateButton() {
         vehicleCostsPage.createButton.click();
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitFor(2);
 
     }
 
-    @And("user sees the title New")
-    public void userSeesTheTitleNew() {
-        String expectedTitle="New";
-        String actualTitle= vehicleCostsPage.title.getText();
-        Assert.assertEquals(expectedTitle,actualTitle);
+    @When("user sees the title New Odoo")
+    public void user_sees_the_title_new_odoo() {
+
+        String expectedTitle = "New - Odoo";
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertEquals(expectedTitle, actualTitle);
+
     }
+
     @And("user selects a vehicle")
     public void userSelectsAVehicle() {
         vehicleCostsPage.vehicleDropdown.click();
-        BrowserUtils.waitFor(1);
-        WebElement audi= Driver.getDriver().findElement(By.linkText("Audi/A1/"));
+        BrowserUtils.waitFor(2);
+        WebElement audi = Driver.getDriver().findElement(By.linkText("Audi/A1/"));
         audi.click();
 
     }
@@ -79,7 +84,7 @@ public class Vehicles_StepDefinitions {
     public void userSelectsAType() {
         vehicleCostsPage.typeDropdown.click();
         BrowserUtils.waitFor(1);
-        WebElement snowTires= Driver.getDriver().findElement(By.linkText("Snow tires"));
+        WebElement snowTires = Driver.getDriver().findElement(By.linkText("Snow tires"));
         snowTires.click();
         BrowserUtils.waitFor(1);
     }
@@ -105,13 +110,11 @@ public class Vehicles_StepDefinitions {
     }
 
 
-
     @And("user clicks on save button")
     public void userClicksOnSaveButton() {
         vehicleCostsPage.saveButton.click();
         BrowserUtils.waitFor(2);
     }
-
 
 
     @Then("title is changed to {string} and new table is created")
@@ -190,5 +193,105 @@ public class Vehicles_StepDefinitions {
         Assert.assertTrue(vehicleCostsPage.actionButton.isDisplayed());
     }
 
+    @And("user writes the created vehicle type in the search box and search")
+    public void userWritesTheCreatedVehicleTypeInTheSearchBoxAndSearch() {
+        BrowserUtils.waitFor(2);
+        vehicleCostsPage.vehicleCostsButton.click();
+        BrowserUtils.waitFor(2);
+        vehicleCostsPage.searchBox.sendKeys("Audi/A1" + Keys.ENTER);
+        BrowserUtils.waitFor(2);
+
+    }
+
+    @Then("user sees the new created vehicle on the list")
+    public void userSeesTheNewCreatedVehicleOnTheList() {
+
+        vehicleCostsPage.audiButton.click();
+        BrowserUtils.waitFor(2);
+
+        String actualName = vehicleCostsPage.newAudi.getText();
+        String expectedName="Audi/A1/";
+        Assert.assertEquals(expectedName,actualName);
+
+
+      /*  List<WebElement> lastRowOfTable = Driver.getDriver().findElements(By.xpath("//div//tr[@class='o_group_header o_group_has_content']"));
+            System.out.println("lastRowOfTable.size() = " + lastRowOfTable.size());
+
+            System.out.println("last row: " + lastRowOfTable.get(lastRowOfTable.size()-1).getText());
+            //String invRef = lastRowOfTable.get(lastRowOfTable.size()-1).getText();
+
+*/
+
+
+    }
+
+
+    @When("user clicks on list button")
+    public void userClicksOnListButton() {
+
+        BrowserUtils.waitFor(2);
+        vehicleCostsPage.list.click();
+        BrowserUtils.waitFor(2);
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        System.out.println("currentUrl = " + currentUrl);
+    }
+
+    @When("user clicks on kanban button")
+    public void userClicksOnKanbanButton() {
+        vehicleCostsPage.vehicleCostsButton.click();
+        BrowserUtils.waitFor(2);
+        vehicleCostsPage.kanban.click();
+        BrowserUtils.waitFor(2);
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        BrowserUtils.sleep(2);
+        System.out.println("currentUrl = " + currentUrl);
+
+    }
+
+    @When("user clicks on graph button")
+    public void userClicksOnGraphButton() {
+       BrowserUtils.waitFor(2);
+        vehicleCostsPage.graph.click();
+        BrowserUtils.waitFor(2);
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        BrowserUtils.sleep(2);
+        System.out.println("currentUrl = " + currentUrl);
+
+
+    }
+
+    @Then("user sees the vehicles costs as {string}")
+    public void userSeesTheVehiclesCostsAs(String mode) {
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        BrowserUtils.sleep(2);
+        Assert.assertTrue(currentUrl.contains(mode));
+        BrowserUtils.sleep(2);
+
+    }
+
+    @And("user clicks on vehicle costs button")
+    public void userClicksOnVehicleCostsButton() {
+        vehicleCostsPage.vehicleCostsButton.click();
+        BrowserUtils.waitFor(2);
+    }
+
+
+    @And("user checks the number of vehicles")
+    public void userChecksTheNumberOfVehicles() {
+    String currentString= vehicleCostsPage.currentNumber.getText();
+        System.out.println("currentString = " + currentString);
+        System.out.println(" ");
+
+    }
+
+
+    @Then("user sees the number of the vehicle costs list increased {string}")
+    public void userSeesTheNumberOfTheVehicleCostsListIncreased(String num) {
+    String newString= vehicleCostsPage.currentNumber.getText();
+        System.out.println("newString = " + newString);
+
+    }
+
 
 }
+

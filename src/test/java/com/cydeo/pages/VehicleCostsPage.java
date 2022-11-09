@@ -1,14 +1,20 @@
 package com.cydeo.pages;
 
+import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class VehicleCostsPage {
     public VehicleCostsPage() {
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
+
     @FindBy(id = "login")
     public WebElement usernameInput;
 
@@ -21,24 +27,24 @@ public class VehicleCostsPage {
     @FindBy(xpath = "//p[@class='alert alert-danger']")
     public WebElement invalidMessage;
 
-    public void login(){
+    public void login() {
         this.usernameInput.sendKeys("posmanager10@info.com");
         this.passwordInput.sendKeys("posmanager");
         this.btn.click();
     }
 
-    @FindBy(xpath="//a[.='More ']")
+    @FindBy(xpath = "//a[.='More ']")
     public WebElement moreButton;
 
-    @FindBy(xpath="//a[@data-menu='134']")
+    @FindBy(xpath = "//a[@data-menu='134']")
     public WebElement fleetButton;
 
     @FindBy(linkText = "Vehicle Costs")
     public WebElement vehicleCostsButton;
-    @FindBy(xpath="//div//button[@class='btn btn-primary btn-sm o_list_button_add']")
+    @FindBy(xpath = "(//div//button[@type='button'])[6]")
     public WebElement createButton;
 
-    @FindBy(xpath="//div[@class='o_input_dropdown']")
+    @FindBy(xpath = "//div[@class='o_input_dropdown']")
     public WebElement vehicleDropdown;
 
     @FindBy(xpath = "//div//input[@name='date']")
@@ -48,11 +54,11 @@ public class VehicleCostsPage {
     public WebElement typeDropdown;
 
 
-    @FindBy(xpath="//div//input[@name='amount']")
+    @FindBy(xpath = "//div//input[@name='amount']")
     public WebElement inputTotalPrice;
 
 
-    @FindBy(xpath="//div//input[@name='description']")
+    @FindBy(xpath = "//div//input[@name='description']")
     public WebElement inputCostDescription;
 
 
@@ -61,8 +67,7 @@ public class VehicleCostsPage {
 
     @FindBy(xpath = "(//div//li[@class='active'])[3]")
     public WebElement title;
-
-    @FindBy (xpath = "(//div//span[@class='o_dropdown_button'])[1]")
+    @FindBy(xpath = "(//div//span[@class='o_dropdown_button'])[1]")
     public WebElement warningMessage;
 
     @FindBy(xpath = "//div//button[@class='btn btn-default btn-sm o_form_button_cancel']")
@@ -83,10 +88,39 @@ public class VehicleCostsPage {
     public WebElement actionButton;
 
 
+    @FindBy(xpath = "//input[@class='o_searchview_input']")
+    public WebElement searchBox;
+
+
+    @FindBy(xpath = "(//td[@class='o_data_cell o_required_modifier'])[60]")
+    public WebElement lastRowOfVehicleList;
+
+    @FindBy(xpath = "(//td[@class='o_data_cell o_required_modifier'])[1] ")
+    public WebElement newAudi;
+
+
+    @FindBy(xpath = "(//div//tr//th[@class='o_group_name'])[1]")
+    public WebElement audiButton;
+
+
+    @FindBy(xpath = "(//div//button[@type='button'])[18]")
+    public WebElement kanban;
+
+    @FindBy(xpath = "(//div//button[@type='button'])[11]")
+    public WebElement list;
+
+    @FindBy(xpath = "(//div//button[@type='button'])[17]")
+    public WebElement graph;
+
+
+    @FindBy(xpath = "(//div//tr[@class='o_group_header o_group_has_content'])[1]")
+    public WebElement currentNumber;
+
+
+
+    }
 
 
 
 
-
-}
 

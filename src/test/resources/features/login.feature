@@ -1,4 +1,4 @@
-@smoke
+
 Feature: Centrilli app login feature
   User Story:
   As a user, I should be able to login with correct credentials accounts.
@@ -12,4 +12,4 @@ Feature: Centrilli app login feature
   Scenario: Negative login test
     Given user is on the centrilli login page
     When user enters invalid username and password
-    Then user should see wrong login/password message displayed
+    Then user should see wrong login and password message displayed
