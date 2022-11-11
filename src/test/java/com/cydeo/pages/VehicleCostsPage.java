@@ -99,7 +99,7 @@ public class VehicleCostsPage {
     public WebElement newAudi;
 
 
-    @FindBy(xpath = "(//div//tr//th[@class='o_group_name'])[1]")
+    @FindBy(xpath = "(//div//span[@class='fa fa-caret-right'])[1]")
     public WebElement audiButton;
 
 
@@ -112,8 +112,8 @@ public class VehicleCostsPage {
     @FindBy(xpath = "(//div//button[@type='button'])[17]")
     public WebElement graph;
 
-
-    @FindBy(xpath = "(//div//tr[@class='o_group_header o_group_has_content'])[1]")
+@FindBy(xpath = "(//div//span[@class='o_pager_limit'])[2]")
+    //@FindBy(xpath ="(//div//th[@class='o_group_name'])[1]" )
     public WebElement currentNumber;
 
 

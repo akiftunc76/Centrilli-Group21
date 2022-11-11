@@ -17,6 +17,7 @@ public class Vehicles_StepDefinitions {
 
     VehicleCostsPage vehicleCostsPage = new VehicleCostsPage();
 
+
     @Given(": user is already logged in and on main page")
     public void userIsAlreadyLoggedInAndOnMainPage() {
 
@@ -278,20 +279,51 @@ public class Vehicles_StepDefinitions {
 
     @And("user checks the number of vehicles")
     public void userChecksTheNumberOfVehicles() {
-    String currentString= vehicleCostsPage.currentNumber.getText();
+
+        vehicleCostsPage.audiButton.click();
+        BrowserUtils.waitFor(2);
+
+        String currentString= vehicleCostsPage.currentNumber.getText();
+
         System.out.println("currentString = " + currentString);
+
+
+    }
+
+
+    @And("number of the vehicle costs list increased {string}")
+    public void userSeesTheNumberOfTheVehicleCostsListIncreased(String num) {
+
+        vehicleCostsPage.audiButton.click();
+        BrowserUtils.waitFor(2);
+        String newString= vehicleCostsPage.currentNumber.getText();
+        System.out.println("newString = " + newString);
         System.out.println(" ");
 
-    }
 
 
-    @Then("user sees the number of the vehicle costs list increased {string}")
-    public void userSeesTheNumberOfTheVehicleCostsListIncreased(String num) {
-    String newString= vehicleCostsPage.currentNumber.getText();
-        System.out.println("newString = " + newString);
 
     }
+
+
+  @Then("user sees the number of the vehicles increased {string}")
+    public void userSeesTheNumberOfTheVehiclesIncreased(String vehicles) {
+
+       String currentString= vehicleCostsPage.currentNumber.getText();
+       String newString= vehicleCostsPage.currentNumber.getText();
+
+
+
+       if(currentString!=newString){
+           System.out.println("The number of vehicles increased 1");
+       }
+
+
+  }
+
 
 
 }
+
+
 

@@ -124,7 +124,7 @@ Feature: Create vehicle costs
     Then user sees the vehicles costs as "list"
 
 
-  @wip
+@wip
   Scenario: create a vehicle cost
     Given : user is already logged in and on main page
     When user clicks on more button
@@ -140,7 +140,8 @@ Feature: Create vehicle costs
     And user enters cost description
     And user clicks on save button
     And user clicks on vehicle costs button
-    Then user sees the number of the vehicle costs list increased "1"
+    And number of the vehicle costs list increased "1"
+    Then user sees the number of the vehicles increased "1"
 
 
 
